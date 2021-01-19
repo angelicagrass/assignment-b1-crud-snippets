@@ -1,3 +1,4 @@
+
 import express from 'express'
 import hbs from 'express-hbs'
 import session from 'express-session'
@@ -7,6 +8,8 @@ import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 // import { router } from './routes/router.js'
 import { connectDB } from './config/mongoose.js'
+
+
 
 /**
  * The main function of the application.

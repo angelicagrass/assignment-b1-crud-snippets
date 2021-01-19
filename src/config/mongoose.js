@@ -1,9 +1,12 @@
 
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 // DISCLAIMER: This is an example connection string. ALWAYS use an environment variable to store the connection string.
-// const CONNECTION_STRING = 'mongodb://localhost:27017/<name>'
-// const DB_CONNECTION_STRING = 'mongodb+srv://<dbuser>:<password>@<cluster>.mongodb.net/<name>?retryWrites=true&w=majority'
+// const CONNECTION_STRING = 'mongodb://localhost:27017/mymongodocker'
+const DB_CONNECTION_STRING = 'mongodb://localhost:27017/mymongodocker'
 
 /**
  * Establishes a connection to a database.
@@ -25,7 +28,7 @@ export const connectDB = async () => {
   })
 
   // Connect to the server.
-  return mongoose.connect(process.env.DB_CONNECTION_STRING, {
+  return mongoose.connect(DB_CONNECTION_STRING, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true

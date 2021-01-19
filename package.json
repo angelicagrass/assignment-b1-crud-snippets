@@ -15,17 +15,28 @@
     "type": "git",
     "url": "git@gitlab.lnu.se:1dv026/student/ag223vg/assignment-b1-crud-snippets.git"
   },
-  "author": "",
+  "author": "Angelica Grass",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-hbs": "^2.3.4",
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "helmet": "^4.4.0",
     "http-errors": "^1.7.2",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.12",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.2",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.18.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.13",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.7"
   },
   "nodemonConfig": {
