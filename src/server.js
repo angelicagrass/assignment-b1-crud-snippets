@@ -6,7 +6,7 @@ import helmet from 'helmet'
 import logger from 'morgan'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-// import { router } from './routes/router.js'
+import { router } from './routes/router.js'
 import { connectDB } from './config/mongoose.js'
 
 
