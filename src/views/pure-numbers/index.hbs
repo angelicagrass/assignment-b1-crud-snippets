@@ -13,6 +13,10 @@
   <tbody>
     {{#if viewData.pureNumbers.length}}
     {{#each viewData.pureNumbers}}
+    <div class="snippetbox">
+      <div id="mysnippetheader">User: FejkName</div>
+      <p>{{this.value}}</p>
+    </div>
     <tr>
       <th scope="row">{{this.createdAt}}</th>
       <td>{{this.value}}</td>

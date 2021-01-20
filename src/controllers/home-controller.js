@@ -33,7 +33,7 @@ export class PureNumbersController {
       res.render('pure-numbers/index', { viewData })
     } catch (error) {
       next(error)
-    }
+    }                                     // Här hittar den vad man fyllt i fältet
   }
 
   /**
