@@ -29,10 +29,21 @@ body {
 
 }
 
+.container {
+  margin-top: 20px;
+}
+
 #mysnippetheader {
   padding: 10px;
   background-color: #413D3D;
   color: #fff;
+}
+
+.grid {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
 }
 /* Floating labels styles
 -------------------------------------------------- * /

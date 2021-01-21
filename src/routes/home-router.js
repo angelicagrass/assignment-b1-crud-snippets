@@ -9,4 +9,8 @@ const controller = new PureNumbersController()
 router.get('/', controller.index)
 
 router.get('/new', controller.new)
+router.get('/user', controller.user)
+
+router.post('/loginUser', controller.loginUser)
+
 router.post('/create', controller.create)

@@ -7,6 +7,7 @@
 
 import moment from 'moment'
 import { PureNumber } from '../models/home-model.js'
+import { UserInfo } from '../models/user-model.js'
 
 /**
  * Encapsulates a controller.
@@ -75,5 +76,35 @@ export class PureNumbersController {
         value: req.body.value
       })
     }
+  }
+  
+  async user (req, res, next) {
+
+    res.render('pure-numbers/user')
+
+
+  }
+
+  async loginUser (req, res, next) {
+    console.log(req.body.usrname)
+
+    try {
+      const username = req.body.usrname
+      const password = req.body.psw
+
+
+      const user = new UserInfo({
+        username: username,
+        password: password
+      })
+      console.log(user + 'hejheje')
+      await user.save()
+      
+    } catch (error) {
+      req.session.flash = { type: 'danger', text: 'Failed!'}
+      
+    }
+
+    // res.render('pure-numbers/userstart')
   }
 }
