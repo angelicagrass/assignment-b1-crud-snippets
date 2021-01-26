@@ -12,8 +12,12 @@ const schema = new mongoose.Schema({
   value: {
     type: String,
     // required: true,
-    maxlength: 50,
+    maxlength: 2000,
     minlength: 2
+  },
+  user: {
+    type: String,
+    required: true,
   }
 }, {
   timestamps: true,

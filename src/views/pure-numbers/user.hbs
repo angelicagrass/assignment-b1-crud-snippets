@@ -1,5 +1,4 @@
 <div class="container">
-
   <form action="/loginUser" method="post">
     <label for="usrname">Username</label>
     <input type="text" id="usrname" name="usrname" value="{{value}}" required>
@@ -7,8 +6,20 @@
     <label for="psw">Password</label>
     <input type="password" id="psw" name="psw" value="{{value}}" required>
 
-    <button type="submit">hejehje</button>
-    
+    <button type="submit" class="btn btn-info">New</button>
+    {{!-- <input type="submit" value="Submit"> --}}
+  </form>
+</div>
+
+<div class="container">
+  <form action="/loginPost" method="post">
+    <label for="user">Username</label>
+    <input type="text" id="user" name="user" value="{{value}}" required>
+
+    <label for="psw">Password</label>
+    <input type="password" id="pass" name="pass" value="{{value}}" required>
+
+    <button type="submit" class="btn btn-info">Login</button>
     {{!-- <input type="submit" value="Submit"> --}}
   </form>
 </div>

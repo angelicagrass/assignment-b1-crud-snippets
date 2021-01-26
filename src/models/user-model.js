@@ -1,6 +1,8 @@
 
 // import { bcryptjs } from 'bcryptjs'
 import mongoose from 'mongoose'
+import bcrypt from 'bcrypt'
+
 
 // Create a schema.
 const schema = new mongoose.Schema({
@@ -27,6 +29,22 @@ schema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, 8)
   console.log('schemat!')
 })
+
+schema.statics.authenticate = async function (user, password) {
+  console.log(user)
+
+  const loginUser = await this.findOne({ username: user })
+
+  if (!loginUser || !(await bcrypt.compare(password, loginUser.password))) {
+    throw new Error('Invalid login attempt')
+  }
+  
+  return loginUser
+
+  // const pass = await bcryptjs.compare(password, loginUser.password)
+  // return pass
+
+}
 
 // schema.post('save', async function () {
 //   // this.password = await bcrypt.hash(this.password, 8)

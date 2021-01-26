@@ -3,14 +3,20 @@
 </h1>
 
 <div class="grid">
-
   <tbody>
     {{#if viewData.pureNumbers.length}}
     {{#each viewData.pureNumbers}}
       <div class="snippetbox">
-        <div id="mysnippetheader">User: FejkName</div>
+        {{#if this.checkuser}}
+        <div id="mysnippetheader">
+          <button class="btn btn-outline-danger">remove</button>
+          <button class="btn btn-outline-success">edit</button>
+        </div>
+        {{else}}
+        {{/if}}
+        <div id="mysnippetheader">{{this.user}}</div>
         {{this.createdAt}}
-        <p>{{this.value}}</p>
+        <p class="snippetwords">{{this.value}}</p>
       </div>
     {{/each}}
     {{else}}

@@ -25,6 +25,7 @@ body {
   border: solid 1px #e2e2e2;
   background-color: #f4f4f4;
   margin: 20px;
+  overflow: scroll;
   /* position: absolute; */
 
 }
@@ -44,6 +45,10 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
+}
+
+.snippetwords {
+  word-break: break-all;
 }
 /* Floating labels styles
 -------------------------------------------------- * /

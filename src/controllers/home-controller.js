@@ -21,20 +21,28 @@ export class PureNumbersController {
    * @param {Function} next - Express next middleware function.
    */
   async index (req, res, next) {
+    console.log('INDEX!')
+    console.log(req.session)
+
+    // console.log(req.session.username)
     try {
       const viewData = {
+        loggedIn: req.session.loggedin, 
         pureNumbers: (await PureNumber.find({}))
           .map(pureNumber => ({
             id: pureNumber._id,
             createdAt: moment(pureNumber.createdAt).fromNow(),
-            value: pureNumber.value
+            value: pureNumber.value,
+            user: pureNumber.user,
+            checkuser: req.session.name === pureNumber.user
           }))
           .sort((a, b) => a.value - b.value)
       }
+      console.log(viewData)
       res.render('pure-numbers/index', { viewData })
     } catch (error) {
       next(error)
-    }                                     // Här hittar den vad man fyllt i fältet
+    } 
   }
 
   /**
@@ -44,9 +52,15 @@ export class PureNumbersController {
    * @param {object} res - Express response object.
    */
   async new (req, res) {
+    console.log('NEW')
+
+    console.log(req.session.name)
     const viewData = {
-      value: undefined
+      loggedIn: req.session.loggedin,
+      username: req.session.name
     }
+
+
     res.render('pure-numbers/new', { viewData })
   }
 
@@ -60,7 +74,9 @@ export class PureNumbersController {
     try {
       // Create a new pure number...
       const pureNumber = new PureNumber({
-        value: req.body.value
+        value: req.body.value,
+        user: req.session.name
+
       })
 
       // ...save the number to the database...
@@ -81,8 +97,6 @@ export class PureNumbersController {
   async user (req, res, next) {
 
     res.render('pure-numbers/user')
-
-
   }
 
   async loginUser (req, res, next) {
@@ -91,20 +105,46 @@ export class PureNumbersController {
     try {
       const username = req.body.usrname
       const password = req.body.psw
-
-
+      
       const user = new UserInfo({
         username: username,
         password: password
       })
-      console.log(user + 'hejheje')
+
       await user.save()
       
     } catch (error) {
       req.session.flash = { type: 'danger', text: 'Failed!'}
-      
+      res.redirect('./user')
     }
-
     // res.render('pure-numbers/userstart')
+  }
+
+
+  async loginPost (req, res, next) {
+
+    try {
+      const user = await UserInfo.authenticate(req.body.user, req.body.pass)
+      req.session.regenerate(async() => {
+        req.session.loggedin = true
+        const userID = await UserInfo.findOne({username: req.body.user})
+        const id = userID._id
+        req.session.name = req.body.user
+        console.log('LOGINPOST')
+        console.log(id)
+        console.log(user.username)
+        // const thisUser = (await UserInfo.findOne({username: req.body.value[0]}))
+        // req.session.userID = thisUser._id
+        // console.log(req.session.userID)
+        res.redirect('/new')
+      })
+      
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  async logout (req, res) {
+    req.session.destroy()
+    res.redirect('..')
   }
 }
