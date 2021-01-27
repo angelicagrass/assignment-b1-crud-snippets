@@ -130,9 +130,6 @@ export class PureNumbersController {
         const userID = await UserInfo.findOne({username: req.body.user})
         const id = userID._id
         req.session.name = req.body.user
-        console.log('LOGINPOST')
-        console.log(id)
-        console.log(user.username)
         // const thisUser = (await UserInfo.findOne({username: req.body.value[0]}))
         // req.session.userID = thisUser._id
         // console.log(req.session.userID)
@@ -143,8 +140,37 @@ export class PureNumbersController {
       console.log(e)
     }
   }
+
   async logout (req, res) {
     req.session.destroy()
     res.redirect('..')
   }
+
+  async removeSnippet (req, res) {
+
+    console.log('removeeeew')
+    console.log(req.url)
+    
+    try {
+      await PureNumber.findOneAndDelete({_id: req.url.substring(14)})
+      req.session.flash = { type: 'secondary', text: 'Your snippet was removed'}
+      res.redirect('.')
+      
+    } catch (error) {
+      req.session.flash = { type: 'warning', text: 'You cant remove others snippets!'}
+    }
+  }
+
+  async edit (req, res) {
+
+    console.log(req)
+
+
+
+  }
+
+
+
+
+
 }

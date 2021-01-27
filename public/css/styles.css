@@ -26,12 +26,18 @@ body {
   background-color: #f4f4f4;
   margin: 20px;
   overflow: scroll;
+
   /* position: absolute; */
 
 }
 
 .container {
   margin-top: 20px;
+}
+
+p {
+  white-space: pre-line;
+
 }
 
 #mysnippetheader {
@@ -47,8 +53,18 @@ body {
 
 }
 
+.time {
+  padding: 0px 3px;
+  margin: 0px;
+  color: lightgrey;
+}
+
+
+
 .snippetwords {
   word-break: break-all;
+  padding: 3px 3px;
+
 }
 /* Floating labels styles
 -------------------------------------------------- * /

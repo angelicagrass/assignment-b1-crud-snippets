@@ -13,6 +13,9 @@ router.get('/user', controller.user)
 
 router.get('/logout', controller.logout)
 
+router.get('/remove', controller.removeSnippet)
+router.get('/edit', controller.edit)
+
 router.post('/loginPost', controller.loginPost)
 
 router.post('/loginUser', controller.loginUser)
