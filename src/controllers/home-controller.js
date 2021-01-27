@@ -83,7 +83,7 @@ export class PureNumbersController {
       await pureNumber.save()
 
       // ...and redirect and show a message.
-      req.session.flash = { type: 'success', text: 'The pure number was saved successfully.' }
+      req.session.flash = { type: 'success', text: 'The snippet was saved successfully.' }
       res.redirect('.')
     } catch (error) {
       // If an error, or validation error, occurred, view the form and an error message.
@@ -112,16 +112,22 @@ export class PureNumbersController {
       })
 
       await user.save()
+      req.session.flash = { type: 'success', text: 'You created a new user! Sign in to start creating snippets!'}
+      res.redirect('./user')
+      // res.redirect('.')
       
     } catch (error) {
       req.session.flash = { type: 'danger', text: 'Failed!'}
       res.redirect('./user')
     }
-    // res.render('pure-numbers/userstart')
+    // res.redirect('.')
   }
 
 
   async loginPost (req, res, next) {
+    console.log('LOGINPOST!')
+
+    console.log(req)
 
     try {
       const user = await UserInfo.authenticate(req.body.user, req.body.pass)
@@ -164,6 +170,16 @@ export class PureNumbersController {
   async edit (req, res) {
 
     console.log(req)
+
+
+
+  }
+
+  async createnewuser (req, res) {
+
+    res.render('pure-numbers/newuser')
+
+
 
 
 

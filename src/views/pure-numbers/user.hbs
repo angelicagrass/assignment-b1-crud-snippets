@@ -1,25 +1,18 @@
-<div class="container">
-  <form action="/loginUser" method="post">
-    <label for="usrname">Username</label>
-    <input type="text" id="usrname" name="usrname" value="{{value}}" required>
 
-    <label for="psw">Password</label>
-    <input type="password" id="psw" name="psw" value="{{value}}" required>
-
-    <button type="submit" class="btn btn-info">New</button>
-    {{!-- <input type="submit" value="Submit"> --}}
-  </form>
-</div>
-
-<div class="container">
-  <form action="/loginPost" method="post">
-    <label for="user">Username</label>
-    <input type="text" id="user" name="user" value="{{value}}" required>
-
-    <label for="psw">Password</label>
-    <input type="password" id="pass" name="pass" value="{{value}}" required>
-
-    <button type="submit" class="btn btn-info">Login</button>
-    {{!-- <input type="submit" value="Submit"> --}}
-  </form>
+<div class="login-form">
+    <form action="/loginPost" method="post">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" id="user" name="user" value="{{value}}" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" id="pass" name="pass" value="{{value}}" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-info btn-block">Log in</button>
+        </div>
+        <div class="clearfix">
+        </div>        
+    </form>
+    <p class="text-center"><a href="/createnewuser" class="text-info">Create an Account</a></p>
 </div>

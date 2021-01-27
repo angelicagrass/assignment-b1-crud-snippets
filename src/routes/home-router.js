@@ -16,6 +16,8 @@ router.get('/logout', controller.logout)
 router.get('/remove', controller.removeSnippet)
 router.get('/edit', controller.edit)
 
+router.get('/createnewuser', controller.createnewuser)
+
 router.post('/loginPost', controller.loginPost)
 
 router.post('/loginUser', controller.loginUser)
