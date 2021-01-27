@@ -18,9 +18,30 @@ body {
   background-color: #f5f5f5;
 }
 
+.btn {
+  padding: 2px 3px;
+
+}
+
+.right {
+  float: right;
+  
+}
+
+.left {
+  float: right;
+  margin-right: 5px;
+}
+
+.username {
+  float: left;
+}
+
+
+
 .snippetbox {
   height: 250px;
-  width: 250px;
+  width: 300px;
   border-radius: 5px;
   border: solid 1px #e2e2e2;
   background-color: #f4f4f4;
@@ -44,13 +65,16 @@ p {
   padding: 10px;
   background-color: #413D3D;
   color: #fff;
+  height: 50px;
+  width: 100%;
+ display: inline-block;
+
 }
 
 .grid {
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-
 }
 
 .time {
@@ -59,12 +83,9 @@ p {
   color: lightgrey;
 }
 
-
-
 .snippetwords {
   word-break: break-all;
   padding: 3px 3px;
-
 }
 /* Floating labels styles
 -------------------------------------------------- * /

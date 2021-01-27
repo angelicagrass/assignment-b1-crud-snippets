@@ -6,23 +6,23 @@
   <tbody>
     {{#if viewData.pureNumbers.length}}
     {{#each viewData.pureNumbers}}
-
       <div class="snippetbox">
-       {{#if this.checkuser}}
-
         <div id="mysnippetheader">
-          <form action="/edit">
-            <button type="submit" action="/remove" class="btn btn-outline-success">edit</button>
-          </form>
-  
-          <form action="/remove">
-            <button name="value" value="{{this.id}}" type="submit" class="btn btn-outline-danger">remove</button>    
-          </form>     
-        </div>
+            <p class="username">{{this.user}}</p>
 
-       {{else}}
-       {{/if}} 
-          <div id="mysnippetheader">{{this.user}}</div>
+          {{#if this.checkuser}}
+            <div class="right">
+              <form action="/edit">
+                <button type="submit" action="/remove" class="btn btn-outline-success">edit</button>
+              </form>
+            </div>
+          <div class="left">
+            <form action="/remove">
+              <button name="value" value="{{this.id}}" type="submit" class="btn btn-outline-danger">remove</button>    
+            </form>  
+          </div>
+          {{/if}}    
+        </div>
           <p class ="time">{{this.createdAt}}</p>
           <p class="snippetwords">{{this.value}}</p>
       </div>
