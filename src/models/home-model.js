@@ -15,6 +15,10 @@ const schema = new mongoose.Schema({
     maxlength: 2000,
     minlength: 2
   },
+  text: {
+    type: String,
+    maxlength: 2000
+  },
   user: {
     type: String,
     required: true,

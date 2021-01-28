@@ -18,6 +18,8 @@ router.get('/edit', controller.edit)
 
 router.get('/createnewuser', controller.createnewuser)
 
+router.post('/savesnippet', controller.savesnippet)
+
 router.post('/loginPost', controller.loginPost)
 
 router.post('/loginUser', controller.loginUser)

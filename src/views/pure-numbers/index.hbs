@@ -16,13 +16,16 @@
         <div id="mysnippetheader">
                   <p class="username">{{this.user}}</p>
                   <div class="right">
-          <form action="/savesnippet">
-            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-success">save</button>
-          </form>
+          <form action="/savesnippet" method="post">
+            <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}" class="btn btn-outline-success">save</button>
+          
         </div>
         </div>
 
-        <p id="edittext" class="snippetwords" contenteditable="true">{{this.value}}</p>
+        <textarea id="edittext" name="text" text="{{this.value}}">{{this.value}}</textarea>
+
+
+        </form>
  
         </div>
 

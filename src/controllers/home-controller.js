@@ -35,7 +35,8 @@ export class PureNumbersController {
             value: pureNumber.value,
             user: pureNumber.user,
             checkuser: req.session.name === pureNumber.user,
-            editSnippet: req.session.editSnippet === pureNumber.id
+            editSnippet: req.session.editSnippet === pureNumber.id,
+            text: pureNumber.text
           }))
           .sort((a, b) => a.value - b.value)
       }
@@ -189,7 +190,27 @@ export class PureNumbersController {
   }
 
   async savesnippet (req, res) {
-    
+
+    console.log(req.body.value)
+
+    console.log(req.body.text)
+
+
+
+
+
+    try {
+
+      await PureNumber.findOneAndUpdate({ _id: req.body.value }, { value: req.body.text})
+
+      req.session.editSnippet = false
+      
+      res.redirect('.')
+    } catch (error) {
+      
+      
+    }
+
   }
 
 
