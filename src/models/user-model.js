@@ -27,7 +27,6 @@ const schema = new mongoose.Schema({
 
 schema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, 8)
-  console.log('schemat!')
 })
 
 schema.statics.authenticate = async function (user, password) {

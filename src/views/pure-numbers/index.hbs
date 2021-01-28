@@ -1,11 +1,53 @@
 <h1>
   <span class="fas fa-th"></span> Snippets
 </h1>
-
 <div class="grid">
   <tbody>
     {{#if viewData.pureNumbers.length}}
     {{#each viewData.pureNumbers}}
+
+
+
+
+
+
+    {{#if this.editSnippet}}
+        <div class="snippetbox">
+        <div id="mysnippetheader">
+                  <p class="username">{{this.user}}</p>
+                  <div class="right">
+          <form action="/savesnippet">
+            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-success">save</button>
+          </form>
+        </div>
+        </div>
+
+        <p id="edittext" class="snippetwords" contenteditable="true">{{this.value}}</p>
+ 
+        </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{else}}
+    
+    
+
+
+
+
+
     <div class="snippetbox">
       <div id="mysnippetheader">
         <p class="username">{{this.user}}</p>
@@ -13,7 +55,7 @@
         {{#if this.checkuser}}
         <div class="right">
           <form action="/edit">
-            <button type="submit" action="/remove" class="btn btn-outline-success">edit</button>
+            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-success">edit</button>
           </form>
         </div>
         <div class="left">
@@ -22,12 +64,15 @@
           </form>
         </div>
         {{/if}}
+
       </div>
       <p class="time">{{this.createdAt}}</p>
       <p class="snippetwords">{{this.value}}</p>
     </div>
+    {{/if}}
     {{/each}}
     {{else}}
     {{/if}}
+
   </tbody>
 </div>

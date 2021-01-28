@@ -61,7 +61,7 @@ const main = async () => {
     saveUninitialized: false, // Don't save a created but not modified session.
     cookie: {
       httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      maxAge: 1000 * 60 * 60 * 2, // 2 hours
       sameSite: 'lax'
     }
   }
