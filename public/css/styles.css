@@ -131,7 +131,17 @@ code {
 #edittext {
   color: black;
   text-align: left;
+  width: 100%;
+  height: 150px;
+  resize: none;
+  border: none;
+  padding: 3px;
+  background-color: #f4f4f4;
+  outline: none;
 
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 /* #edittime {

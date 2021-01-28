@@ -17,10 +17,11 @@
                   <p class="username">{{this.user}}</p>
                   <div class="right">
           <form action="/savesnippet" method="post">
-            <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}" class="btn btn-outline-success">save</button>
+            <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}" class="btn btn-outline-info">save</button>
           
         </div>
         </div>
+        <p class="time">Edit your snippet and save</p>
 
         <textarea id="edittext" name="text" text="{{this.value}}">{{this.value}}</textarea>
 
@@ -58,7 +59,7 @@
         {{#if this.checkuser}}
         <div class="right">
           <form action="/edit">
-            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-success">edit</button>
+            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-info">edit</button>
           </form>
         </div>
         <div class="left">
