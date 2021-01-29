@@ -23,6 +23,8 @@ const main = async () => {
   // Get the directory name of this module's path.
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
 
+  const baseURL = process.env.BASE_URL || '/'
+
   // Set various HTTP headers to make the application little more secure (https://www.npmjs.com/package/helmet).
   // (The web application uses external scripts and therefore needs to explicitly trust on code.jquery.com and cdn.jsdelivr.net.)
   app.use(helmet())
@@ -55,8 +57,8 @@ const main = async () => {
 
   // Setup and use session middleware (https://github.com/expressjs/session).
   const sessionOptions = {
-    name: process.env.SESSION_NAME, // Don't use default session cookie name.
-    secret: process.env.SESSION_SECRET, // Change it!!! The secret is used to hash the session with HMAC.
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
     resave: false, // Resave even if a request is not changing the session.
     saveUninitialized: false, // Don't save a created but not modified session.
     cookie: {
@@ -80,6 +82,7 @@ const main = async () => {
       res.locals.flash = req.session.flash
       delete req.session.flash
     }
+    res.locals.baseURL = baseURL
 
     next()
   })

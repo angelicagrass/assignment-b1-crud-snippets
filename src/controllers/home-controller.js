@@ -1,7 +1,7 @@
 /**
  * Module for the PureNumbersController.
  *
- * @author Mats Loock
+ * @author Angelica Grass
  * @version 1.0.0
  */
 
@@ -21,10 +21,7 @@ export class PureNumbersController {
    * @param {Function} next - Express next middleware function.
    */
   async index (req, res, next) {
-    console.log('INDEX!')
-    console.log(req.session)
 
-    // console.log(req.session.username)
     try {
       const viewData = {
         loggedIn: req.session.loggedin, 
@@ -54,15 +51,11 @@ export class PureNumbersController {
    * @param {object} res - Express response object.
    */
   async new (req, res) {
-    console.log('NEW')
 
-    console.log(req.session.name)
     const viewData = {
       loggedIn: req.session.loggedin,
       username: req.session.name
     }
-
-
     res.render('pure-numbers/new', { viewData })
   }
 
@@ -97,12 +90,10 @@ export class PureNumbersController {
   }
   
   async user (req, res, next) {
-
     res.render('pure-numbers/user')
   }
 
   async loginUser (req, res, next) {
-    console.log(req.body.usrname)
 
     try {
       const username = req.body.usrname
@@ -116,21 +107,14 @@ export class PureNumbersController {
       await user.save()
       req.session.flash = { type: 'success', text: 'You created a new user! Sign in to start creating snippets!'}
       res.redirect('./user')
-      // res.redirect('.')
       
     } catch (error) {
-      req.session.flash = { type: 'danger', text: 'Failed!'}
+      req.session.flash = { type: 'danger', text: 'Failed! User was not created!'}
       res.redirect('./user')
     }
-    // res.redirect('.')
   }
 
-
   async loginPost (req, res, next) {
-    console.log('LOGINPOST!')
-
-    console.log(req)
-
     try {
       const user = await UserInfo.authenticate(req.body.user, req.body.pass)
       req.session.regenerate(async() => {
@@ -138,27 +122,20 @@ export class PureNumbersController {
         const userID = await UserInfo.findOne({username: req.body.user})
         const id = userID._id
         req.session.name = req.body.user
-        // const thisUser = (await UserInfo.findOne({username: req.body.value[0]}))
-        // req.session.userID = thisUser._id
-        // console.log(req.session.userID)
-        res.redirect('/new')
-      })
-      
-    } catch (e) {
-      console.log(e)
+        res.redirect('./new')
+      })   
+    } catch (error) {
+      req.session.flash = { type: 'warning', text: 'Something went wrong!'}
+      res.redirect('./user')
     }
   }
 
   async logout (req, res) {
     req.session.destroy()
-    res.redirect('..')
+    res.redirect('./user')
   }
 
   async removeSnippet (req, res) {
-
-    console.log('removeeeew')
-    console.log(req.url)
-    
     try {
       await PureNumber.findOneAndDelete({_id: req.url.substring(14)})
       req.session.flash = { type: 'secondary', text: 'Your snippet was removed'}
@@ -170,65 +147,28 @@ export class PureNumbersController {
   }
 
   async edit (req, res) {
-    console.log('EDIT!!!!!!')
-
 
     try {
-
       req.session.editSnippet = req.url.substr(12)
-      res.redirect('.')
-      
-    } catch (e) {
-      
+      res.redirect('.')      
+    } catch (error) {
+      next(error)   
     }
-
-    //Få in ny text??
-    //Uppdatera value
-    // await PureNumber.findOneAndUpdate({_id: req.url.substring(12)})
-  
-
   }
 
   async savesnippet (req, res) {
 
-    console.log(req.body.value)
-
-    console.log(req.body.text)
-
-
-
-
-
     try {
-
       await PureNumber.findOneAndUpdate({ _id: req.body.value }, { value: req.body.text})
-
       req.session.editSnippet = false
-      
+      req.session.flash = { type: 'info', text: 'Your snippet was updated!'}
       res.redirect('.')
     } catch (error) {
-      
-      
+      next(error) 
     }
-
   }
-
-
-
-
-
-
-
-
-
-
 
   async createnewuser (req, res) {
     res.render('pure-numbers/newuser')
   }
-
-
-
-
-
 }

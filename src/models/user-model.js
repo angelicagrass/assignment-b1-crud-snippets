@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
   username: {
     type: String,
     required: '`{PATH}` is required!',
-    minlength: [3, '`{PATH}` ({VALUE}) username needs to be at least 3 characters ({MIN}).'],
+    minlength: [2, '`{PATH}` ({VALUE}) username needs to be at least 2 characters ({MIN}).'],
     maxlength: [30, '`{PATH}` ({VALUE}) exceeds the limit ({MAX}).'],
     unique: true,
     trim: true,
@@ -30,19 +30,11 @@ schema.pre('save', async function () {
 })
 
 schema.statics.authenticate = async function (user, password) {
-  console.log(user)
-
   const loginUser = await this.findOne({ username: user })
-
   if (!loginUser || !(await bcrypt.compare(password, loginUser.password))) {
     throw new Error('Invalid login attempt')
   }
-  
   return loginUser
-
-  // const pass = await bcryptjs.compare(password, loginUser.password)
-  // return pass
-
 }
 
 // schema.post('save', async function () {

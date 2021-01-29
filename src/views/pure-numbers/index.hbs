@@ -16,7 +16,7 @@
         <div id="mysnippetheader">
                   <p class="username">{{this.user}}</p>
                   <div class="right">
-          <form action="/savesnippet" method="post">
+          <form action="./savesnippet" method="post">
             <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}" class="btn btn-outline-info">save</button>
           
         </div>
@@ -58,12 +58,12 @@
 
         {{#if this.checkuser}}
         <div class="right">
-          <form action="/edit">
+          <form action="./edit">
             <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-info">edit</button>
           </form>
         </div>
         <div class="left">
-          <form action="/remove">
+          <form action="./remove">
             <button name="value" value="{{this.id}}" type="submit" class="btn btn-outline-danger">remove</button>
           </form>
         </div>
