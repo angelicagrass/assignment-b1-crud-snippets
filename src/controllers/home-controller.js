@@ -1,5 +1,5 @@
 /**
- * Module for the PureNumbersController.
+ * Module for the PureSnippetController.
  *
  * @author Angelica Grass
  * @version 1.0.0

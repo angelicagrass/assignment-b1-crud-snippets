@@ -1,3 +1,9 @@
+/**
+ * Module for the PureSnippet schema.
+ *
+ * @author Angelica Grass
+ * @version 1.0.0
+ */
 
 import mongoose from 'mongoose'
 

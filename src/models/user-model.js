@@ -1,4 +1,11 @@
 
+/**
+ * Module for the UserInfo schema.
+ *
+ * @author Angelica Grass
+ * @version 1.0.0
+ */
+
 // import { bcryptjs } from 'bcryptjs'
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
