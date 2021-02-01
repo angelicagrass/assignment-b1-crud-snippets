@@ -14,7 +14,7 @@ import { UserInfo } from '../models/user-model.js'
  */
 export class PureSnippetController {
   /**
-   * Displays a list of pure numbers.
+   * Displays a list of snippets.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -26,12 +26,12 @@ export class PureSnippetController {
         loggedIn: req.session.loggedin,
         pureSnippet: (await PureSnippet.find({}))
           .map(pureSnippet => ({
-            id: pureSnippet._id,
-            createdAt: moment(pureSnippet.createdAt).fromNow(),
+            id: pureSnippet._id, // Id to identify the snippet at server.
+            createdAt: moment(pureSnippet.createdAt).fromNow(), // Time when created.
             value: pureSnippet.value,
             user: pureSnippet.user,
-            checkuser: req.session.name === pureSnippet.user,
-            editSnippet: req.session.editSnippet === pureSnippet.id,
+            checkuser: req.session.name === pureSnippet.user, // checks if session name is equal to owner of snippet.
+            editSnippet: req.session.editSnippet === pureSnippet.id, // checks if edit snippet is equal to id of pure snippet.
             text: pureSnippet.text
           }))
           .sort((a, b) => a.value - b.value)
@@ -44,7 +44,7 @@ export class PureSnippetController {
   }
 
   /**
-   * Returns a HTML form for creating a new pure number.
+   * Returns a HTML form for creating a new snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -58,14 +58,14 @@ export class PureSnippetController {
   }
 
   /**
-   * Creates a new pure number.
+   * Creates a new snippet.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
   async create (req, res) {
     try {
-      // Create a new pure number...
+      // Create a new snippet...
       const pureSnippet = new PureSnippet({
         value: req.body.value,
         user: req.session.name
@@ -134,7 +134,6 @@ export class PureSnippetController {
       req.session.regenerate(async () => {
         req.session.loggedin = true
         await UserInfo.findOne({ username: req.body.user })
-        // const id = userID._id
         req.session.name = req.body.user
         res.redirect('./')
       })

@@ -1,3 +1,9 @@
+/**
+ * Module for the PureSnippet schema.
+ *
+ * @author Angelica Grass
+ * @version 1.0.0
+ */
 
 import express from 'express'
 import hbs from 'express-hbs'
@@ -10,7 +16,7 @@ import { router } from './routes/router.js'
 import { connectDB } from './config/mongoose.js'
 
 /**
- * The main function of the application.
+ * The main function of the application. Most of thecode comes from the exercise.
  */
 const main = async () => {
   await connectDB()
