@@ -1,82 +1,57 @@
+{{!-- Create snippets and handle remove/edit --}}
+
 <h1>
   <span class="fas fa-th"></span> Snippets
 </h1>
 <div class="grid">
   <tbody>
-    {{#if viewData.pureNumbers.length}}
-    {{#each viewData.pureNumbers}}
-
-
-
-
-
-
+    {{!-- If there is any exististing snippets in server --}}
+    {{#if viewData.pureSnippet.length}}
+    {{!-- for each snippet in server  --}}
+    {{#each viewData.pureSnippet}}
+    {{!-- If edit is active, make snippet editable with savebtn --}}
     {{#if this.editSnippet}}
-        <div class="snippetbox">
-        <div id="mysnippetheader">
-                  <p class="username">{{this.user}}</p>
-                  <div class="right">
-          <form action="./savesnippet" method="post">
-            <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}" class="btn btn-outline-info">save</button>
-          
-        </div>
-        </div>
-        <p class="time">Edit your snippet and save</p>
-
-        <textarea id="edittext" name="text" text="{{this.value}}">{{this.value}}</textarea>
-
-
-        </form>
- 
-        </div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{else}}
-    
-    
-
-
-
-
-
     <div class="snippetbox">
       <div id="mysnippetheader">
         <p class="username">{{this.user}}</p>
-
-        {{#if this.checkuser}}
         <div class="right">
-          <form action="./edit">
-            <button name ="value" type="submit" value="{{this.id}}" class="btn btn-outline-info">edit</button>
-          </form>
+          <form action="./savesnippet" method="post">
+            <button name="value" type="submit" text="{{this.value}}" value="{{this.id}}"
+              class="btn btn-outline-info">save</button>
         </div>
-        <div class="left">
-          <form action="./remove">
-            <button name="value" value="{{this.id}}" type="submit" class="btn btn-outline-danger">remove</button>
-          </form>
-        </div>
-        {{/if}}
-
       </div>
-      <p class="time">{{this.createdAt}}</p>
-      <p class="snippetwords">{{this.value}}</p>
+            <p class="time">Edit your snippet and save</p>
+            <textarea id="edittext" name="text" text="{{this.value}}">{{this.value}}</textarea>
+          </form>
+    </div>
+    {{!-- else, if edit is not active,  --}}
+    {{else}}
+    <div class="snippetbox">
+      <div id="mysnippetheader">
+        <p class="username">{{this.user}}</p>
+        {{!-- If user is the owner of snippet, enable edit and remove button --}}
+        {{#if this.checkuser}}
+          <div class="right">
+            <form action="./edit" method="post">
+              <button name="value" type="submit" value="{{this.id}}" class="btn btn-outline-info">edit</button>
+              <input type="hidden" name="id" value="{{this.id}}" />
+            </form>
+          </div>
+          <div class="left">
+            <form action="./remove" method="post">
+              <button name="value" value="{{this.id}}" type="submit" class="btn btn-outline-danger">remove</button>
+              <input type="hidden" name="id" value="{{this.id}}" />
+            </form>
+          </div>
+        {{/if}}
+        {{!-- snippet from other users --}}
+      </div>
+        <p class="time">{{this.createdAt}}</p>
+        <p class="snippetwords">{{this.value}}</p>
     </div>
     {{/if}}
     {{/each}}
     {{else}}
     {{/if}}
-
   </tbody>
 </div>

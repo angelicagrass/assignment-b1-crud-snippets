@@ -3,7 +3,6 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-
 // Create a schema.
 const schema = new mongoose.Schema({
   username: {
@@ -29,6 +28,14 @@ schema.pre('save', async function () {
   this.password = await bcrypt.hash(this.password, 8)
 })
 
+/**
+ * Authenticate user.
+ *
+ * @param {string} user - username from user.
+ * @param {string} password - password from user.
+ *
+ * @returns {object} - authenticated user from server.
+ */
 schema.statics.authenticate = async function (user, password) {
   const loginUser = await this.findOne({ username: user })
   if (!loginUser || !(await bcrypt.compare(password, loginUser.password))) {
@@ -36,11 +43,6 @@ schema.statics.authenticate = async function (user, password) {
   }
   return loginUser
 }
-
-// schema.post('save', async function () {
-//   // this.password = await bcrypt.hash(this.password, 8)
-//   console.log('posten!')
-// })
 
 // Create a model using the schema.
 export const UserInfo = mongoose.model('UserInfo', schema)

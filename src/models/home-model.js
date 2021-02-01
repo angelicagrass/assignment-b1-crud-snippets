@@ -22,4 +22,4 @@ const schema = new mongoose.Schema({
 })
 
 // Create a model using the schema.
-export const PureNumber = mongoose.model('PureNumber', schema)
+export const PureSnippet = mongoose.model('PureNumber', schema)
