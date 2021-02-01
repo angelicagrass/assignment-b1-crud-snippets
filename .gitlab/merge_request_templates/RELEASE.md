@@ -15,14 +15,14 @@
 -->
 
 - [x] I have started working on the assignment.
-- [ ] All mandatory functional requirements are met. (see below)
-- [ ] All mandatory non-functional requirements are met. (see below)
-- [ ] I have completed the assignment report (see below).
-- [ ] I am aware that I have to book a time slot for an oral exam after this MR has been submitted.
+- [x] All mandatory functional requirements are met. (see below)
+- [x] All mandatory non-functional requirements are met. (see below)
+- [x] I have completed the assignment report (see below).
+- [x] I am aware that I have to book a time slot for an oral exam after this MR has been submitted.
 
 ---
 
-- [ ] I intend to submit the assignment, and at the same time, I guarantee that I am the one who created the submitted code. When I have used external libraries or used code from other sources, the source has been clearly stated.\
+- [x] I intend to submit the assignment, and at the same time, I guarantee that I am the one who created the submitted code. When I have used external libraries or used code from other sources, the source has been clearly stated.\
 \
 (___Swedish___: _Jag avser göra en inlämning av uppgiften och samtidigt garanterar jag att det är jag som skapat den inlämnade koden. När jag använt externa bibliotek, eller använt kod från andra källor, har källan angetts tydligt._)
 
@@ -80,6 +80,7 @@
     In the assignment report, you reflect on your assignment. 
 -->
 
+<<<<<<< .gitlab/merge_request_templates/RELEASE.md
 <!-- 
     ======================================================
 
@@ -90,6 +91,8 @@
 
 The application has been deployed and is available at https://cscloudX-XXX.lnu.se/snippets-app/.
 
+=======
+>>>>>>> .gitlab/merge_request_templates/RELEASE.md
 ### Reflection
 
 <!-- 
