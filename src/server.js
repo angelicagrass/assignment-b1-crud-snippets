@@ -30,7 +30,7 @@ const main = async () => {
   app.use(helmet())
   app.use(
     helmet.contentSecurityPolicy({
-      directives: {
+      directives: { // to accept bootstrap
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
         'script-src': ["'self'", 'code.jquery.com', 'cdn.jsdelivr.net']
       }

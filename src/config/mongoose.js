@@ -1,9 +1,6 @@
 
 import mongoose from 'mongoose'
 
-const DB_CONNECTION_STRING = "mongodb://localhost:27017/mymongodocker"
-
-
 /**
  * Establishes a connection to a database.
  *

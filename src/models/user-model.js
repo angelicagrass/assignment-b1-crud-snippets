@@ -12,7 +12,7 @@ const schema = new mongoose.Schema({
     minlength: [2, '`{PATH}` ({VALUE}) username needs to be at least 2 characters ({MIN}).'],
     maxlength: [30, '`{PATH}` ({VALUE}) exceeds the limit ({MAX}).'],
     unique: true,
-    trim: true,
+    trim: true
   },
   password: {
     type: String,
@@ -43,9 +43,4 @@ schema.statics.authenticate = async function (user, password) {
 // })
 
 // Create a model using the schema.
-
-
-
-
-
 export const UserInfo = mongoose.model('UserInfo', schema)
