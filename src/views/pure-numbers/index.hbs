@@ -3,6 +3,7 @@
 <h1>
   <span class="fas fa-th"></span> Snippets
 </h1>
+
 <div class="grid">
   <tbody>
     {{!-- If there is any exististing snippets in server --}}
@@ -29,7 +30,7 @@
     <div class="snippetbox">
       <div id="mysnippetheader">
         <p class="username">{{this.user}}</p>
-        {{!-- If user is the owner of snippet, enable edit and remove button --}}
+        {{!-- If user is the owner of snippet, enable edit- and removebutton --}}
         {{#if this.checkuser}}
           <div class="right">
             <form action="./edit" method="post">

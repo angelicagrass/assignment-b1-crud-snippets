@@ -44,8 +44,8 @@ schema.pre('save', async function () {
  * @returns {object} - authenticated user from server.
  */
 schema.statics.authenticate = async function (user, password) {
-  const loginUser = await this.findOne({ username: user })
-  if (!loginUser || !(await bcrypt.compare(password, loginUser.password))) {
+  const loginUser = await this.findOne({ username: user }) // find user on server
+  if (!loginUser || !(await bcrypt.compare(password, loginUser.password))) { // compare if not, throw error
     throw new Error('Invalid login attempt')
   }
   return loginUser

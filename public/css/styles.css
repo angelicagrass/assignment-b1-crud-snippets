@@ -9,10 +9,6 @@ body {
   margin-bottom: 60px;
 }
 
-
-
-
-
 .login-form {
   width: 340px;
   margin: 50px auto;
@@ -142,6 +138,10 @@ code {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+
+#password-condition {
+  font-size: 10px;
 }
 
 /* #edittime {

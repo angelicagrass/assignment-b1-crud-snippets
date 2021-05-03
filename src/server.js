@@ -24,7 +24,7 @@ const main = async () => {
   // Creates an Express application.
   const app = express()
 
-  // Get the directory name of this module's path.
+  // Get the directory name of this module's path. Get the absolut path
   const directoryFullName = dirname(fileURLToPath(import.meta.url))
 
   const baseURL = process.env.BASE_URL || '/'
@@ -49,7 +49,7 @@ const main = async () => {
     partialsDir: join(directoryFullName, 'views', 'partials')
   }))
   app.set('view engine', 'hbs')
-  app.set('views', join(directoryFullName, 'views'))
+  app.set('views', join(directoryFullName, 'views')) // Get the hbs file from here
 
   // Parse requests of the content type application/x-www-form-urlencoded.
   // Populates the request object with a body object (req.body).

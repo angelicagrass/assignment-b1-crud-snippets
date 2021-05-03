@@ -123,7 +123,7 @@ export class PureSnippetController {
   }
 
   /**
-   * Checks if input username and password is available.
+   * Checks if input username and password is right. LOG IN.
    *
    * @param {object} req - Express request object.
    * @param {object} res - Express response object.
@@ -204,11 +204,12 @@ export class PureSnippetController {
   }
 
   /**
-   * Renders newuser.
+   * Save edited snippet.
    *
+   * @param {object} req - Express request object.
    * @param {object} res - Express response object.
    */
-  async createnewuser (res) {
+  async createnewuser (req, res) {
     res.render('pure-numbers/newuser')
   }
 }
